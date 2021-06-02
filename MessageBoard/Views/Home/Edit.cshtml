@@ -1,0 +1,14 @@
+﻿@model Message
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Edited" asp-route-id="@Model.Id">
+    <input name="message" type="text" placeholder="Update your message" />
+    <button type="submit">Update</button>
+</form>
+@*<form method="post" asp-action="Delete" asp-route-id="@Model.Id">
+    <button type="submit">Delete your message</button>
+</form>*@

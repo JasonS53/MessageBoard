@@ -1,0 +1,32 @@
+﻿@model List<Message>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Welcome to the message board!</h1>
+
+@foreach (Message message in Model)
+{
+    <h4>@message.UserId         @message.PostedTime</h4>
+    <p>@message.Message1</p>
+    @if (message.Updated == true)
+    {
+        <p>Edited</p>
+    }
+    @if (User.Identity.Name == message.UserId)
+    {
+        <a asp-action="Edit" asp-route-id="@message.Id">Edit</a>
+        //<a asp-action="Edit" asp-route-id="@message.Id">Delete</a>
+        <form method="post" asp-action="Delete" asp-route-id="@message.Id">
+            <button type="submit">Delete your message</button>
+        </form>
+    }
+}
+
+<form method="post" asp-action="MessageBoard">
+    <h2>Enter a new message</h2>
+    <input name="message" type="text" placeholder="Enter a message" />
+    <button type="submit">Submit</button>
+</form>
